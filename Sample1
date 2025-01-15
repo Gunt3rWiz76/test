@@ -11,13 +11,15 @@ Sub DecodeAllASCIIURLs()
     ' Loop through each cell in the used range
     For Each cell In ws.UsedRange
         If Not IsEmpty(cell.Value) Then
-            ' Loop through all ASCII codes (0 to 127)
-            For asciiCode = 0 To 127
+            ' Loop through ASCII codes %00 to %9F
+            For asciiCode = 0 To &H9F
                 encodedSymbol = "%" & Format(Hex(asciiCode), "00")
-                ' Skip replacing %25 (percent symbol)
+                decodedSymbol = Chr(asciiCode)
+                
+                ' Replace both uppercase and lowercase encoded symbols, except %25
                 If encodedSymbol <> "%25" Then
-                    decodedSymbol = Chr(asciiCode)
-                    cell.Value = Replace(cell.Value, encodedSymbol, decodedSymbol)
+                    cell.Value = Replace(cell.Value, encodedSymbol, decodedSymbol) ' Uppercase
+                    cell.Value = Replace(cell.Value, LCase(encodedSymbol), decodedSymbol) ' Lowercase
                 End If
             Next asciiCode
         End If
