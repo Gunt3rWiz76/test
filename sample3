@@ -1,0 +1,14 @@
+if (typeof spjs.dffs.beforeSubmit === "undefined") {
+    spjs.dffs.beforeSubmit = [];
+}
+
+function validateAttachments() {
+    var attachmentsField = jQuery("#idAttachmentsTable");
+    if (attachmentsField.length === 0 || attachmentsField.find("tr").length <= 1) {
+        alert("Please add at least one attachment before submitting the form.");
+        return false;
+    }
+    return true;
+}
+
+spjs.dffs.beforeSubmit.push(validateAttachments);
