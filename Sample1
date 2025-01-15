@@ -1,0 +1,24 @@
+Sub DecodeAllASCIIURLs()
+    Dim ws As Worksheet
+    Dim cell As Range
+    Dim asciiCode As Integer
+    Dim encodedSymbol As String
+    Dim decodedSymbol As String
+    
+    ' Set the worksheet (modify Sheet1 if necessary)
+    Set ws = ThisWorkbook.Sheets("Sheet1")
+    
+    ' Loop through each cell in the used range
+    For Each cell In ws.UsedRange
+        If Not IsEmpty(cell.Value) Then
+            ' Loop through all ASCII codes (0 to 127)
+            For asciiCode = 0 To 127
+                encodedSymbol = "%" & Format(Hex(asciiCode), "00")
+                decodedSymbol = Chr(asciiCode)
+                cell.Value = Replace(cell.Value, encodedSymbol, decodedSymbol)
+            Next asciiCode
+        End If
+    Next cell
+    
+    MsgBox "URL decoding complete!", vbInformation
+End Sub
