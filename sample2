@@ -1,0 +1,44 @@
+vba
+Sub ReplaceAsciiInURLsCaseInsensitive()
+
+  Dim wsFindReplace As Worksheet, wsURLs As Worksheet
+  Dim findReplaceTable As Variant
+  Dim lastRowFindReplace As Long, lastRowURLs As Long
+  Dim i As Long, j As Long
+  Dim url As String, findStr As String, replaceStr As String
+
+  ' Set worksheets
+  Set wsFindReplace = ThisWorkbook.Sheets("Sheet1")
+  Set wsURLs = ThisWorkbook.Sheets("Sheet2")
+
+  ' Get last row of find/replace table
+  lastRowFindReplace = wsFindReplace.Cells(Rows.Count, "A").End(xlUp).Row
+
+  ' Get last row of URLs
+  lastRowURLs = wsURLs.Cells(Rows.Count, "A").End(xlUp).Row
+
+  ' Read find/replace table into array
+  findReplaceTable = wsFindReplace.Range("A1:B" & lastRowFindReplace).Value
+
+  ' Loop through URLs
+  For i = 1 To lastRowURLs
+    url = wsURLs.Cells(i, 1).Value
+
+    ' Loop through find/replace pairs
+    For j = 1 To lastRowFindReplace
+      findStr = UCase(findReplaceTable(j, 1)) ' Convert find string to uppercase
+      replaceStr = findReplaceTable(j, 2) 'No need to convert replace string
+
+      ' Perform case-insensitive replace using UCase
+      url = Replace(UCase(url), findStr, UCase(replaceStr)) 'Make Case Insensitive
+      url = LCase(url) ' revert back to original case
+
+    Next j
+
+    ' Write updated URL back to sheet
+    wsURLs.Cells(i, 1).Value = url
+  Next i
+
+  MsgBox "ASCII characters replaced in URLs (case-insensitive).", vbInformation
+
+End Sub
