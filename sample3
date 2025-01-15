@@ -6,9 +6,20 @@ function validateAttachments() {
     var attachmentsField = jQuery("#idAttachmentsTable");
     if (attachmentsField.length === 0 || attachmentsField.find("tr").length <= 1) {
         alert("Please add at least one attachment before submitting the form.");
+        return false; // Prevent form submission
+    }
+    return true; // Allow form submission
+}
+
+// Add the function to DFFS beforeSubmit array
+spjs.dffs.beforeSubmit.push(validateAttachments);
+
+function validateAttachments() {
+    console.log("Running attachment validation...");
+    var attachmentsField = jQuery("#idAttachmentsTable");
+    if (attachmentsField.length === 0 || attachmentsField.find("tr").length <= 1) {
+        alert("Please add at least one attachment before submitting the form.");
         return false;
     }
     return true;
 }
-
-spjs.dffs.beforeSubmit.push(validateAttachments);
