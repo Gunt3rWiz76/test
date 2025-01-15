@@ -14,11 +14,14 @@ Sub DecodeAllASCIIURLs()
             ' Loop through all ASCII codes (0 to 127)
             For asciiCode = 0 To 127
                 encodedSymbol = "%" & Format(Hex(asciiCode), "00")
-                decodedSymbol = Chr(asciiCode)
-                cell.Value = Replace(cell.Value, encodedSymbol, decodedSymbol)
+                ' Skip replacing %25 (percent symbol)
+                If encodedSymbol <> "%25" Then
+                    decodedSymbol = Chr(asciiCode)
+                    cell.Value = Replace(cell.Value, encodedSymbol, decodedSymbol)
+                End If
             Next asciiCode
         End If
     Next cell
     
-    MsgBox "URL decoding complete!", vbInformation
+    MsgBox "URL decoding complete (excluding %25)!", vbInformation
 End Sub
