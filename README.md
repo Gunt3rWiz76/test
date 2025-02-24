@@ -21,57 +21,46 @@ Function RemoveHTMLTags(ByVal txt As String) As String
 
 
 
-Team,
+Business Objective:
+	•	Improve efficiency, controls, and cost savings by enhancing SystemX’s usability and content management features.
+	•	Align with enterprise branding and accessibility (ADA) compliance requirements to unlock future enhancements.
+	•	Enhance the end-user experience to improve content discoverability, clarity, and relevance.
+	•	Reduce operational friction for content writers, allowing for better content curation and impact analysis.
+	•	Assess and potentially enhance backend code structure to support future AI-driven modeling and automation opportunities.
 
-In case you are unable to meet on Monday, I wanted to outline the key objectives and questions we need to address before moving forward with AI integration in SystemX. This is not an exhaustive list, but it highlights critical areas that require input.
+Project Timeline:
+	•	January – December 2026
 
-1. Data Structure for AI Modeling
+Business Priority:
+	•	High Priority: This initiative is critical to improving efficiency and compliance while addressing usability gaps that impact thousands of users.
 
-To ensure AI can effectively interact with our content repository, we need to determine the most suitable data structure. Using the example of a single content item (Open a Consumer Deposit Account):
-	•	Each left-navigation section (e.g., You Need to Know, Agent Action, Prepare to Open Deposit Account) is a separate record stored as an HTML-based CLOB (Character Large Object).
-	•	These sections are linked together by a single GUID/primary key called a VCM (please confirm terminology).
-	•	Each VCM is assigned to one or more user profiles, which dictate visibility.
-	•	Users only see content based on their assigned profile(s).
+Key Enhancements:
 
-Does this structure support AI-driven modeling effectively, or should adjustments be considered?
+For End-Users:
+	•	Improved ability to identify and interact with multimedia content.
+	•	Enhanced search results to improve content discoverability.
+	•	Clear indicators for new and revised content to streamline updates.
+	•	Synopsis and intended audience visibility to help users quickly assess relevance.
 
-2. AI and Profile-Based Content Access
+For Content Writers:
+	•	Improved impact analysis when retiring or modifying content.
+	•	Built-in acronym check to enforce clarity and consistency.
+	•	Enhancements to the content preview process, improving accuracy before publishing.
 
-Since SystemX operates on profile-based indexing, we need to ensure AI recommendations adhere to these constraints:
-	•	Users have a primary profile but can also maintain alternate profiles.
-	•	Separate procedures (i.e., distinct GUIDs/VCMs) may exist for different profiles, meaning Profile A may see one procedure while Profile B sees another.
-	•	A single content item can be tagged to multiple user profiles.
-	•	Updates occur daily, with 850+ user profiles affected.
+Technical Enhancements:
+	•	Identify and potentially enhance backend code structure to enable future AI-driven modeling, such as automated content tagging, predictive search improvements, and trend analysis.
+	•	Ensure scalability and flexibility in the system architecture to support emerging AI capabilities.
 
-What considerations are needed to ensure AI respects these access controls and profile-based indexing?
+Compliance & Technical Considerations:
+	•	The XYZ system currently has 375+ ADA compliance issues, requiring resolution before any further enhancements can be made.
+	•	Enterprise branding non-compliance is a blocker to ongoing UI/UX improvements.
 
-3. Handling Frequent Content Updates and Unpublishing
+Risks of Not Investing:
+	•	Continued inefficiencies in content discovery and management, increasing operational burden.
+	•	User frustration due to poor search results and lack of clear content indicators.
+	•	Missed compliance deadlines, preventing future system enhancements and putting the platform at risk.
+	•	Higher long-term costs due to delayed fixes and growing technical debt.
+	•	Inability to leverage AI-driven efficiencies in the future, potentially falling behind industry standards.
 
-SystemX content is highly dynamic, with continuous updates. AI solutions must account for:
-	•	High-frequency updates: We publish 50-250 content updates per day.
-	•	Versioning: Updates can modify existing content or introduce new content items.
-	•	Content unpublishing: Some content is periodically removed based on policy and usage.
-	•	Indexing approach: Should AI handle content changes via batch processing, real-time updates, or scheduled re-indexing?
 
-What is the most efficient way to ensure AI recommendations remain in sync with live content?
 
-4. Infrastructure Requirements for AI Integration
-
-Although January is considered a slow month, SystemX still experiences:
-	•	10M page views
-	•	2.2M visits
-	•	83K unique visitors
-	•	2.6M searches
-
-Given this scale, what infrastructure considerations (e.g., computational resources, indexing strategies) are required to support AI-driven enhancements without performance degradation?
-
-5. Funding and Ownership
-
-I am seeking confirmation on the funding and responsibility breakdown:
-	•	Data preparation (normalization & restructuring for AI modeling): Owned by the LOB.
-	•	AI solution development: To be presented to the Gen-AI council, with funding provided to Tech.
-	•	UI/UX implementation: Who owns this component?
-
-Please review these points, and let me know if any adjustments are needed before our discussion. If there are additional technical considerations, feel free to add them.
-
-Thanks,
